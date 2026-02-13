@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Vuoi passare il San Valentino con me?</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(to bottom right, #ff4d6d, #ffc2d1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+    }
+
+    .card {
+        background: #fff0f5;
+        width: 90%;
+        max-width: 420px;
+        padding: 30px;
+        border-radius: 30px;
+        text-align: center;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+    
+    .main-img {
+        margin-top: 10px;
+        width: 100%;
+        max-height: 500px;
+        object-fit: cover;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    }
+
+    h1 { color: #d6336c; }
+    h2 { color: #b5179e; }
+
+    p {
+        font-size: 18px;
+        color: #444;
+    }
+
+    /* BUTTON ROW */
+    .buttons {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    button {
+        width: 140px;          /* FIXED SIZE */
+        padding: 12px 0;
+        font-size: 18px;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: transform 0.15s ease;
+    }
+
+    #yesBtn {
+        background-color: #ff4d6d;
+        color: white;
+    }
+
+    #yesBtn:hover {
+        background-color: #e63950;
+    }
+
+    #noBtn {
+        background-color: #adb5bd;
+        color: white;
+        position: relative; /* IMPORTANT */
+    }
+
+    /* Falling hearts */
+    .heart {
+        position: fixed;
+        font-size: 20px;
+        animation: fall 4s linear infinite;
+        z-index: 1;
+    }
+    
+    .result-img {
+        margin-top: 5px;
+        max-width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        animation: pop 0.5s ease;
+    }
+    
+    .carousel {
+        margin-top: 5px;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    @keyframes pop {
+        0% { transform: scale(0.5); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+
+    @keyframes fall {
+        0% { transform: translateY(-10vh); opacity: 1; }
+        100% { transform: translateY(110vh); opacity: 0; }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  
+    <h1>Happy Valentine’s Day ❤️</h1>
+    <h2>Cara <span style="color:#ff4d6d;">Alice</span> 🌸</h2>
+
+    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHk1bmtyZTU0MGFqemVtM3J1Z3p3aDlwY25udjQwazRqamJtNnVhYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/WK7omsLop0431tZjXb/giphy.gif"
+         class="main-img"
+         id="mainImage"
+         alt="Romantic image">
+
+    
+    <p>💕 <strong>Vuoi passare San Valentino con me?</strong> 💌</p>
+
+    <div class="buttons">
+        <button id="yesBtn" onclick="yesClicked()">Yes 💖</button>
+        <button id="noBtn" onclick="noClicked()">No 😜</button>
+    </div>
+</div>
+
+
+
+<script>
+    function yesClicked() {
+        const card = document.querySelector(".card");
+        
+        document.getElementById("mainImage").style.display = "none";
+    
+        // Rimuove i bottoni
+        const buttons = document.querySelector(".buttons");
+        buttons.remove();
+    
+        // Titolo
+        const message = document.createElement("h2");
+        message.innerHTML = "Love you!💖  A dopo!! 💖🥰";
+        card.appendChild(message);
+    
+        // Container carosello
+        const carousel = document.createElement("div");
+        carousel.className = "carousel";
+    
+        const img = document.createElement("img");
+        img.className = "result-img";
+        carousel.appendChild(img);
+    
+        card.appendChild(carousel);
+    
+        // Lista immagini (metti i tuoi file qui)
+        const images = [
+            "https://tenor.com/it/view/inter-inter-milan-inter-2025-inter-2025-26-lautaro-martinez-gif-4752336671831820501.gif",
+            "https://tenor.com/it/view/inter-triplete-22maggio-forzainter-victory-gif-17283198.gif",
+            "https://tenor.com/it/view/thuram-inter-christmas-gif-15536333456884165876.gif",
+            "https://tenor.com/it/view/inter-inter-milan-lautaro-martinez-lautaro-martinez-inter-lautaro-gif-24526406.gif"
+        ];
+    
+        let index = 0;
+        img.src = images[index];
+    
+        setInterval(() => {
+            index = (index + 1) % images.length;
+            img.src = images[index];
+        }, 2500); // cambia ogni 2 secondi
+    }
+
+
+    function noClicked() {
+        const card = document.querySelector(".card");
+        document.getElementById("mainImage").style.display = "none";
+        showResult("Risposta sbagliata 😢💔");
+    
+        // Container carosello
+        const carousel = document.createElement("div");
+        carousel.className = "carousel";
+    
+        const img = document.createElement("img");
+        img.className = "result-img";
+        carousel.appendChild(img);
+    
+        card.appendChild(carousel);
+    
+        // Lista immagini (metti i tuoi file qui)
+        const images = [
+            "https://tenor.com/it/view/reaction-sports-football-meme-soccer-gif-5262333045167080471.gif",
+            "https://tenor.com/it/view/inter-inter-milan-lautaro-martinez-lautaro-martinez-inter-lautaro-gif-25655589.gif",
+            "https://tenor.com/it/view/spalletti-sad-0words-no-parole-meme-gif-25060291.gif"
+        ];
+    
+        let index = 0;
+        img.src = images[index];
+    
+        setInterval(() => {
+            index = (index + 1) % images.length;
+            img.src = images[index];
+        }, 2500); // cambia ogni 2 secondi
+        
+        // Bottone Riprova
+        const retryBtn = document.createElement("button");
+        retryBtn.innerHTML = "Riprova 🔄";
+        retryBtn.style.marginTop = "20px";
+        retryBtn.style.backgroundColor = "#6c757d";
+        retryBtn.style.color = "white";
+    
+        retryBtn.onclick = () => {
+            location.reload(); // ricarica la pagina
+        };
+    
+        document.querySelector(".card").appendChild(retryBtn);
+    }
+    
+    function showResult(titleText) {
+        const card = document.querySelector(".card");
+    
+        // Rimuove i bottoni
+        const buttons = document.querySelector(".buttons");
+        buttons.remove();
+        // Titolo
+        const message = document.createElement("h2");
+        message.innerHTML = titleText;
+        card.appendChild(message);
+    
+        // Container carosello
+        const carousel = document.createElement("div");
+        carousel.className = "carousel";
+    
+        const img = document.createElement("img");
+        img.className = "result-img";
+        carousel.appendChild(img);
+    
+        card.appendChild(carousel);
+    
+        // Lista immagini
+        const images = [
+            "https://media.tenor.com/XXXXX/tenor.gif",
+            "https://media.tenor.com/YYYYY/tenor.gif",
+            "https://media.tenor.com/ZZZZZ/tenor.gif"
+        ];
+    
+        let index = 0;
+        img.src = images[index];
+    
+        setInterval(() => {
+            index = (index + 1) % images.length;
+            img.src = images[index];
+        }, 2500);
+    }
+    
+    
+    
+    // Falling hearts
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        document.body.appendChild(heart);
+    
+        setTimeout(() => heart.remove(), 4000);
+    }, 300);
+
+</script>
+
+</body>
+</html>
