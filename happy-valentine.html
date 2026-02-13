@@ -52,18 +52,18 @@
         /* BUTTON ROW */
         .buttons {
             margin-top: 30px;
+            padding: 300px
             display: flex;
-            justify-content: space-between;
+            justify-content:center;
             align-items: center;
             position: relative;
         }
 
         button {
-            width: 140px;
+            width: 150px;
             /* FIXED SIZE */
-            padding: 12px 0;
-            font-size: 18px;
-            border: none;
+            padding: 20px 0;
+            font-size: 20px;
             border-radius: 30px;
             cursor: pointer;
             transition: transform 0.15s ease;
@@ -83,6 +83,10 @@
             color: white;
             position: relative;
             /* IMPORTANT */
+        }
+        
+        #noBtn:hover {
+            background-color: #8a9097;
         }
 
         /* Falling hearts */
@@ -148,7 +152,7 @@
 
         <div class="buttons">
             <button id="yesBtn" onclick="yesClicked()">Yes 💖</button>
-            <button id="noBtn" onclick="noClicked()">No 😜</button>
+            <button id="noBtn" onclick="noClicked()">No 💔</button>
         </div>
     </div>
 
@@ -294,6 +298,5 @@
     </script>
 
 </body>
-
 
 </html>
